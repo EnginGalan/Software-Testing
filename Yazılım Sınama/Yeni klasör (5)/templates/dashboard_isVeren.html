@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jobseeker Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Hosgeldiniz, {{ user.username }}</h1>
+    
+
+    
+
+    <h1>İş Oluşturma</h1>
+    <form action="{{ url_for('create_job_listing') }}" method="POST">
+    <div class="box">
+        <label for="title">Başlık:</label>
+        <input class="box" type="text" name="title" required><br>
+    </div>
+    <div class="box">
+        <label for="description">Açıklama:</label>
+        <textarea class="box" name="description" required></textarea><br>
+    </div>
+    <div class="box">
+        <label for="price">Fiyat:</label>
+        <input class="box" type="number" name="price" required><br>
+    </div>    
+    <div class="box">    
+        <button class="Login_Register2"type="submit">Is Olusturma</button>
+    </div>
+    </form>
+    <!-- Log Out -->
+    <a href="{{ url_for('logout') }}"><button class="Login_Register1">Cikis Yap</button></a>
+    <a href="{{ url_for('my_job_listings') }}"><button class="Login_Register1">Ilanlarim</button></a>
+</body>
+</html>

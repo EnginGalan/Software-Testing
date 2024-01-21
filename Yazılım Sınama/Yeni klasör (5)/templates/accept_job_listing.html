@@ -1,0 +1,24 @@
+<!-- accept_job_listing.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Accept Job Listing</title>
+</head>
+<body>
+    <h1>İlan Kabul</h1>
+    
+    <p>İlanı Kabul Etmek İstiyor Musunuz?</p>
+    <div class="left">   
+    <form method="post">
+        <input class="left Login_Register2" type="submit" value="Kabul Et">
+    </form>
+
+    </div>
+    <a href="{{ url_for('dashboard_isAlan') }}"><button class="Login_Register2">İptal Et</button></a>
+
+</body>
+</html>

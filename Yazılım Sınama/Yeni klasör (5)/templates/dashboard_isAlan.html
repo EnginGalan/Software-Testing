@@ -1,0 +1,53 @@
+<!-- dashboard_isAlan.html -->
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class"isAlan">
+    <h1>Hosgeldiniz, {{ user.username }}</h1>
+    
+    <!-- Flash Mesajlarını Gösterme -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for message in messages %}
+                    <div class="flash-message mesaj">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    
+    <!-- İlanları Görüntüleme -->
+    <h2>Is Ilanlari</h2>
+    <ul>
+        {% for job_listing in user.job_listings %}
+        {% if job_listing.status == 'Kabul Edilmedi' %}    
+        <div class="jobs">
+            {% if job_listing.status == 'Kabul Edilmedi' %}
+                Başlık:{{ job_listing.title }} <br> Açıklama:{{ job_listing.description }}<br> Fiyat:{{ job_listing.price }}TL <br> İlan Oluşturma Tarihi:{{ job_listing.created_at}}<br>
+
+                    <a href="{{ url_for('accept_job_listing', job_listing_id=job_listing.id) }}"><button class="Login_Register1">Accept</button></a>
+            {% endif %}
+                </div>
+                {% endif %}
+        {% endfor %}
+    </ul>
+    <p>Paranız: <strong>{{ user.money }}TL </strong> </p>
+    <!-- Çıkış -->
+    <a href="{{ url_for('logout') }}"><button class="Login_Register2">Cikis Yap</button></a>
+
+    <a href="{{ url_for('accepted_job_listings') }}"><button class="Login_Register2">Kabul edilen ilanlarim</button></a>
+
+    <form action="{{ url_for('check_comments') }}" method="post">
+        <div class="box">
+            <label for="reddit_username">Reddit Kullanıcı Adınız:</label>
+            <input class="box" type="text" name="reddit_username" required><br>
+        </div>
+        <input type="submit" value="Reddit Kullanıcı Adını Kontrol Et">
+    </form>
+
+    </div>
+</body>
+</html>

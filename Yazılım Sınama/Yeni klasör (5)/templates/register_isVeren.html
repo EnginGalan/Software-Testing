@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>İşveren Registration</title>
+</head>
+<body>
+    <div class="box">
+        <h2>Register</h2>
+        <div class="outer-box">
+            <div class="login-box">
+                <h4 class="login-text">İşveren Kayıt</h4>
+                {% if error %}
+                    <p style="color: red;">{{ error }}</p>
+                {% endif %}
+                <form method="post" action="{{ url_for('register_isVeren') }}">
+                    <center>
+                        <input type="text" name="username" placeholder="Kullanıcı Adı">
+                        <input type="password" name="password" placeholder="Şifre">
+                        <button type="submit" id="btn-login">Kayıt Ol</button>
+                    </center>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

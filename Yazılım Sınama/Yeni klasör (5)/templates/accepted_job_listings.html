@@ -1,0 +1,30 @@
+<!-- accepted_job_listings.html -->
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <!-- Kabul Edilen İlanları Görüntüleme -->
+    <h2>Kabul Edilen İşler</h2>
+    <ul>
+        {% for job_listing in user.job_listings %}
+        {% if job_listing.status == 'Accepted' %}
+        <div class="acceptedjobs">
+        {% if job_listing.status == 'Accepted' %}
+            Başlık:{{ job_listing.title }} <br> Açıklama:{{ job_listing.description }}<br> Fiyat:{{ job_listing.price }}TL <br> İlan Oluşturma Tarihi:{{ job_listing.created_at}}<br>
+            {% endif %}
+        
+        </div>
+        {% endif %}
+        {% endfor %}
+    </ul>
+
+    <!-- Ana sayfaya dönme linki -->
+    <a href="{{ url_for('dashboard_isAlan') }}"><button class="Login_Register2">Dashboarda Geri Dön</button></a>
+
+    <!-- Çıkış -->
+    <a href="{{ url_for('logout') }}"><button class="Login_Register2">Çıkış Yap</button></a>
+</body>
+</html>
